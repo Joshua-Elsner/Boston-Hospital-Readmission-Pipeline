@@ -1,0 +1,6 @@
+dagster
+dagster-webserver
+dagster-gcp
+pandas
+google-cloud-bigquery
+db-dtypes

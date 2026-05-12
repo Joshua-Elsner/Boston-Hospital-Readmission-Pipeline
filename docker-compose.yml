@@ -1,0 +1,16 @@
+services:
+  synthea:
+    # Tell Compose to build the local Dockerfile we just made
+    build:
+      context: .
+      dockerfile: Dockerfile.synthea
+    container_name: synthea-generator
+    volumes:
+      - ./raw_data:/output
+    command: [
+      "-p", "1000", 
+      "Massachusetts", "Boston",
+      "--exporter.csv.export=true",
+      "--exporter.fhir.export=false",
+      "--exporter.baseDirectory=/output"
+    ]

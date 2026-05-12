@@ -1,0 +1,10 @@
+# Use a lightweight, official Java 17 runtime
+FROM eclipse-temurin:17-jre-jammy
+
+WORKDIR /app
+
+# Download the latest stable pre-compiled Synthea release
+RUN wget -qO synthea.jar https://github.com/synthetichealth/synthea/releases/latest/download/synthea-with-dependencies.jar
+
+# Set the container to run the JAR file by default
+ENTRYPOINT ["java", "-jar", "synthea.jar"]
