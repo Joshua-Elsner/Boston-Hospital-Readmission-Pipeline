@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_patients
+    description: "Cleaned patient demographics staging model."
+    columns:
+      - name: patient_id
+        description: "Primary key for patients."
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_encounters
+    description: "Standardized hospital visits."
+    columns:
+      - name: encounter_id
+        description: "Primary key for encounters."
+        tests:
+          - unique
+          - not_null
+      - name: encounter_class
+        description: "The classification of the hospital visit."
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['emergency', 'inpatient', 'ambulatory', 'wellness', 'urgentcare', 'snf', 'home', 'outpatient', 'hospice', 'virtual']
