@@ -1,0 +1,22 @@
+# Python Virtual Environments
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Local Data & Secrets
+raw_data/
+*.csv
+.secrets/
+*.json
+.env
+
+# dbt Artifacts
+transform/target/
+transform/dbt_packages/
+transform/logs/
+
+# Git History
+.git/
+.gitignore
