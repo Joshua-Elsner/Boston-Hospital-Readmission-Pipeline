@@ -1,6 +1,9 @@
+
 services:
+  # -----------------------------------------------------------
+  # Service 1: The Synthetic Data Generator
+  # -----------------------------------------------------------
   synthea:
-    # Tell Compose to build the local Dockerfile we just made
     build:
       context: .
       dockerfile: Dockerfile.synthea
@@ -14,3 +17,22 @@ services:
       "--exporter.fhir.export=false",
       "--exporter.baseDirectory=/output"
     ]
+
+  # -----------------------------------------------------------
+  # Service 2: The Dagster & dbt Orchestrator
+  # -----------------------------------------------------------
+  orchestrator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dagster-orchestrator
+    depends_on:
+      synthea:
+        condition: service_completed_successfully
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./raw_data:/opt/dagster/app/raw_data
+      - ./.secrets:/opt/dagster/app/.secrets:ro
+    env_file:
+      - .env
