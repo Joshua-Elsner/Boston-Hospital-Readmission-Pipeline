@@ -4,3 +4,7 @@ dagster-gcp
 pandas
 google-cloud-bigquery
 db-dtypes
+
+dagster-dbt
+dbt-core
+dbt-bigquery
