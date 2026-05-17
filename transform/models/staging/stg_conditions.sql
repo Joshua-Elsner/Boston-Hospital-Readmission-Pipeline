@@ -1,5 +1,5 @@
 WITH raw_conditions AS (
-    SELECT * FROM {{ source('boston_hospital', 'bronze_conditions') }}
+    SELECT * FROM {{ source('bronze', 'conditions') }}
 )
 
 SELECT

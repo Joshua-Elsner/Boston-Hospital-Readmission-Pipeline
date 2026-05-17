@@ -1,5 +1,5 @@
 WITH raw_patients AS (
-    SELECT * FROM {{ source('boston_hospital', 'bronze_patients') }}
+    SELECT * FROM {{ source('bronze', 'patients') }}
 )
 
 SELECT
