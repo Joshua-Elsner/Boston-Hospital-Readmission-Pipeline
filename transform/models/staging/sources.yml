@@ -1,17 +1,14 @@
 version: 2
 
 sources:
-  - name: boston_hospital
+  - name: bronze
     description: "The raw healthcare data natively ingested from Synthea CSVs via Dagster."
     database: boston-hospital-pipeline
     schema: bronze
     tables:
-      - name: bronze_patients
-        identifier: patients
+      - name: patients
         description: "Raw patient demographic records."
-      - name: bronze_encounters
-        identifier: encounters
+      - name: encounters
         description: "Raw medical encounter logs."
-      - name: bronze_conditions
-        identifier: conditions
+      - name: conditions
         description: "Raw patient condition and diagnosis logs."

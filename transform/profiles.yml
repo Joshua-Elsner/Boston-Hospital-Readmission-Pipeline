@@ -1,0 +1,13 @@
+hospital_transformations:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      # Using Jinja, dbt will automatically grab the path we set in your .env file!
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+      project: boston-hospital-pipeline
+      dataset: silver 
+      threads: 4
+      timeout_seconds: 300
+      location: US
