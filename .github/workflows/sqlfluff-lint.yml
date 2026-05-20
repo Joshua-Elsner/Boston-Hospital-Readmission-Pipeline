@@ -38,12 +38,12 @@ jobs:
       - name: Install dbt Dependencies
         run: dbt deps
       - name: Run SQLFluff Lint
-        # Provide a fake environment variable to satisfy the dbt profile parser
+        # Point dbt to the temporary key file we are about to generate
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ./dummy_key.json
+          GOOGLE_APPLICATION_CREDENTIALS: ./gcp-key.json
         run: |
-          # Create a fake JSON file so dbt doesn't throw a FileNotFoundError
-          echo '{"type": "service_account", "project_id": "dummy"}' > dummy_key.json
+          # Securely inject the GitHub Secret into the runner's environment
+          echo '${{ secrets.GCP_CREDENTIALS }}' > ./gcp-key.json
           
           # Run the linter
           sqlfluff lint models/
