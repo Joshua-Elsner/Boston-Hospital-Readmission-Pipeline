@@ -3,18 +3,18 @@ WITH raw_encounters AS (
 )
 
 SELECT
-    Id AS encounter_id,
-    START AS encounter_start_datetime,
-    STOP AS encounter_end_datetime,
-    PATIENT AS patient_id,
-    ORGANIZATION AS organization_id,
-    PROVIDER AS provider_id,
-    ENCOUNTERCLASS AS encounter_class,
-    CODE AS encounter_code,
-    DESCRIPTION AS encounter_description,
-    BASE_ENCOUNTER_COST AS base_cost,
-    TOTAL_CLAIM_COST AS total_claim_cost,
-    PAYER_COVERAGE AS payer_coverage,
-    REASONCODE AS reason_code,
-    REASONDESCRIPTION AS reason_description
+    id AS encounter_id,
+    start AS encounter_start_datetime,
+    stop AS encounter_end_datetime,
+    patient AS patient_id,
+    organization AS organization_id,
+    provider AS provider_id,
+    encounterclass AS encounter_class,
+    code AS encounter_code,
+    description AS encounter_description,
+    base_encounter_cost AS base_cost,
+    total_claim_cost,
+    payer_coverage,
+    reasoncode AS reason_code,
+    reasondescription AS reason_description
 FROM raw_encounters

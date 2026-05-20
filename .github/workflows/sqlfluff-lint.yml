@@ -13,6 +13,9 @@ jobs:
     name: Lint dbt Models
     runs-on: ubuntu-latest
     
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     # Set the working directory to where dbt project lives
     defaults:
       run:

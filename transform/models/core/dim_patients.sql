@@ -17,7 +17,7 @@ calculate_age AS (
         county,
         zip_code,
         -- Business Logic: Calculate actual age
-        CASE 
+        CASE
             WHEN death_date IS NOT NULL THEN DATE_DIFF(CAST(death_date AS DATE), CAST(birth_date AS DATE), YEAR)
             ELSE DATE_DIFF(CURRENT_DATE(), CAST(birth_date AS DATE), YEAR)
         END AS current_age

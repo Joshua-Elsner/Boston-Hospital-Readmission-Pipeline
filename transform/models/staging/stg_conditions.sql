@@ -3,10 +3,10 @@ WITH raw_conditions AS (
 )
 
 SELECT
-    START AS condition_start_date,
-    STOP AS condition_end_date,
-    PATIENT AS patient_id,
-    ENCOUNTER AS encounter_id,
-    CODE AS condition_code,
-    DESCRIPTION AS condition_description
+    start AS condition_start_date,
+    stop AS condition_end_date,
+    patient AS patient_id,
+    encounter AS encounter_id,
+    code AS condition_code,
+    description AS condition_description
 FROM raw_conditions

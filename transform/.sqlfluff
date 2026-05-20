@@ -11,7 +11,7 @@ project_dir = ./
 profiles_dir = ./
 
 # Set some baseline rules
-[sqlfluff:rules]
+[sqlfluff:indentation]
 tab_space_size = 4
 
 [sqlfluff:rules:capitalisation.keywords]

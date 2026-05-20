@@ -17,6 +17,6 @@ SELECT
     e.total_claim_cost,
     c.condition_code AS primary_diagnosis_code,
     c.condition_description AS primary_diagnosis_description
-FROM encounters e
-LEFT JOIN conditions c
+FROM encounters AS e
+LEFT JOIN conditions AS c
     ON e.encounter_id = c.encounter_id
