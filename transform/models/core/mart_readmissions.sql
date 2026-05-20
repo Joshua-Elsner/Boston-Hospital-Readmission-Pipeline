@@ -37,6 +37,7 @@ SELECT
     p.current_age,       
     p.age_bracket,       
     vh.encounter_start_datetime,
+    DATE_TRUNC(CAST(vh.encounter_start_datetime AS DATE), MONTH) AS encounter_month,
     vh.previous_encounter_start,
     vh.encounter_class,
     vh.previous_encounter_class,
