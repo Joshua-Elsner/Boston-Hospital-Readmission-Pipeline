@@ -37,7 +37,13 @@ jobs:
 
       - name: Install dbt Dependencies
         run: dbt deps
-
       - name: Run SQLFluff Lint
-        # This commands SQLFluff to check models folder
-        run: sqlfluff lint models/
+        # Provide a fake environment variable to satisfy the dbt profile parser
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ./dummy_key.json
+        run: |
+          # Create a fake JSON file so dbt doesn't throw a FileNotFoundError
+          echo '{"type": "service_account", "project_id": "dummy"}' > dummy_key.json
+          
+          # Run the linter
+          sqlfluff lint models/
