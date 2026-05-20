@@ -1,0 +1,40 @@
+name: SQLFluff Linter
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint-models:
+    name: Lint dbt Models
+    runs-on: ubuntu-latest
+    
+    # Set the working directory to where dbt project lives
+    defaults:
+      run:
+        working-directory: ./transform
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dbt and SQLFluff
+        # Install the BigQuery adapter, SQLFluff, and dbt templater
+        run: |
+          pip install dbt-bigquery==1.11.1 sqlfluff sqlfluff-templater-dbt
+
+      - name: Install dbt Dependencies
+        run: dbt deps
+
+      - name: Run SQLFluff Lint
+        # This commands SQLFluff to check models folder
+        run: sqlfluff lint models/

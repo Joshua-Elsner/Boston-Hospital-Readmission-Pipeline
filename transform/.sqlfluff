@@ -1,0 +1,21 @@
+[sqlfluff]
+# Use the dbt templater so SQLFluff understands Jinja
+templater = dbt
+dialect = bigquery
+# Point to your dbt project directory
+runaway_limit = 10
+max_line_length = 120
+
+[sqlfluff:templater:dbt]
+project_dir = ./
+profiles_dir = ./
+
+# Set some baseline rules
+[sqlfluff:rules]
+tab_space_size = 4
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.identifiers]
+capitalisation_policy = lower
